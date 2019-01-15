@@ -32,6 +32,7 @@ namespace Windows10TouchKeyboardFocusFix
                 Edge = AppBarEdges.Float;
             Opacity = 0.01;
             Top = Screen.PrimaryScreen.Bounds.Height;
+            this.Visible = false;
         }
 
         private void TabletModeHelper_TabletModeChanged(object sender, bool isTabletMode)
@@ -52,11 +53,12 @@ namespace Windows10TouchKeyboardFocusFix
                     Debug.WriteLine("Exception in TabletModeHelper_TabletModeChanged: " + ex.ToString());
                 }
             }));
-     }
+        }
 
         private void DockForm_Load(object sender, EventArgs e)
         {
             keyboardStateCheckTimer.Enabled = true;
+            notifyIcon.Visible = true;
         }
 
         private bool IsKeyboardInDockedMode()
