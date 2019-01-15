@@ -49,6 +49,7 @@
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "Touch Keyboard Focus Fix";
             this.notifyIcon.Visible = true;
+            this.notifyIcon.Click += new System.EventHandler(this.notifyIcon_Click);
             // 
             // notifyIconContextMenuStrip
             // 
@@ -58,7 +59,7 @@
             this.toolStripSeparator1,
             this.menuExit});
             this.notifyIconContextMenuStrip.Name = "notifyIconContextMenuStrip";
-            this.notifyIconContextMenuStrip.Size = new System.Drawing.Size(478, 94);
+            this.notifyIconContextMenuStrip.Size = new System.Drawing.Size(478, 144);
             // 
             // toolStripSeparator1
             // 
@@ -70,12 +71,14 @@
             this.menuExit.Name = "menuExit";
             this.menuExit.Size = new System.Drawing.Size(477, 42);
             this.menuExit.Text = "E&xit";
+            this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
             // 
             // menuAbout
             // 
             this.menuAbout.Name = "menuAbout";
             this.menuAbout.Size = new System.Drawing.Size(477, 42);
             this.menuAbout.Text = "&About Touch Keyboard Focus Fix";
+            this.menuAbout.Click += new System.EventHandler(this.menuAbout_Click);
             // 
             // DockForm
             // 

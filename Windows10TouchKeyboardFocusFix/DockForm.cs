@@ -232,5 +232,21 @@ namespace Windows10TouchKeyboardFocusFix
             this.Width = 1;
             Top = Screen.PrimaryScreen.Bounds.Height;
         }
+
+        private void notifyIcon_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void menuAbout_Click(object sender, EventArgs e)
+        {
+            var aboutForm = new AboutForm();
+            aboutForm.ShowDialog();
+        }
+
+        private void menuExit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
