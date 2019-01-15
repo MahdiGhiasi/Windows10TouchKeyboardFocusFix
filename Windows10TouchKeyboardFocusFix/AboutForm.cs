@@ -20,7 +20,7 @@ namespace Windows10TouchKeyboardFocusFix
 
         private void githubLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://github.com/MahdiGhiasi");
+            Process.Start("https://github.com/MahdiGhiasi/Windows10TouchKeyboardFocusFix");
         }
     }
 }
