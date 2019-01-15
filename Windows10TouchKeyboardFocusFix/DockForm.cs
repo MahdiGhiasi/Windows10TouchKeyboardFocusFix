@@ -24,12 +24,9 @@ namespace Windows10TouchKeyboardFocusFix
         {
             InitializeComponent();
 
-            HideDock();
             TabletModeHelper.TabletModeChanged += TabletModeHelper_TabletModeChanged;
-            if (TabletModeHelper.IsTabletMode)
-                Edge = AppBarEdges.Bottom;
-            else
-                Edge = AppBarEdges.Float;
+            TabletModeChanged(TabletModeHelper.IsTabletMode);
+
             Opacity = 0.01;
             Top = Screen.PrimaryScreen.Bounds.Height;
             this.Visible = false;
@@ -41,18 +38,29 @@ namespace Windows10TouchKeyboardFocusFix
             {
                 try
                 {
-                    if (isTabletMode)
-                        Edge = AppBarEdges.Bottom;
-                    else
-                        Edge = AppBarEdges.Float;
-
-                    HideDock();
+                    TabletModeChanged(isTabletMode);
                 }
                 catch (Exception ex)
                 {
                     Debug.WriteLine("Exception in TabletModeHelper_TabletModeChanged: " + ex.ToString());
                 }
             }));
+        }
+
+        private void TabletModeChanged(bool isTabletMode)
+        {
+            if (isTabletMode)
+            {
+                this.FormBorderStyle = FormBorderStyle.None; // for zero height dock
+                Edge = AppBarEdges.Bottom;
+            }
+            else
+            {
+                this.FormBorderStyle = FormBorderStyle.FixedToolWindow; // Hide from Task View
+                Edge = AppBarEdges.Float;
+            }
+
+            HideDock();
         }
 
         private void DockForm_Load(object sender, EventArgs e)
