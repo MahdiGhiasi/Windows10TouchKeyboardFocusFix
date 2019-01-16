@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Squirrel;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -67,6 +68,8 @@ namespace Windows10TouchKeyboardFocusFix
         {
             keyboardStateCheckTimer.Enabled = true;
             notifyIcon.Visible = true;
+
+            SquirrelHelper.CheckForUpdates();
         }
 
         private bool IsKeyboardInDockedMode()

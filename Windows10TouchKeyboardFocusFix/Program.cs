@@ -14,6 +14,7 @@ namespace Windows10TouchKeyboardFocusFix
         [STAThread]
         static void Main()
         {
+            SquirrelHelper.ProcessSquirrelEvents();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new DockForm());
