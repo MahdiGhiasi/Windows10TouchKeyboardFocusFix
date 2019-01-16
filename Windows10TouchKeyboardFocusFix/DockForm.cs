@@ -52,7 +52,7 @@ namespace Windows10TouchKeyboardFocusFix
             if (isTabletMode)
             {
                 this.FormBorderStyle = FormBorderStyle.None; // for zero height dock
-                Edge = AppBarEdges.Bottom;
+                //Edge = AppBarEdges.Bottom;
             }
             else
             {
@@ -236,7 +236,8 @@ namespace Windows10TouchKeyboardFocusFix
         private async void ShowDock(Rectangle keyboardPosition)
         {
             Debug.WriteLine("ShowDock");
-            await Task.Delay(100);
+            await Task.Delay(250);
+            this.Edge = AppBarEdges.Bottom;
 
             //TODO: Make this compatible with all taskbar configurations
             this.Height = keyboardPosition.Height - 92;
@@ -247,7 +248,7 @@ namespace Windows10TouchKeyboardFocusFix
         private void HideDock()
         {
             Debug.WriteLine("HideDock");
-            //Edge = AppBarEdges.Float;
+            Edge = AppBarEdges.Float;
 
             this.Height = 0;
             this.Width = 1;
