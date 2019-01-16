@@ -110,7 +110,7 @@ namespace Windows10TouchKeyboardFocusFix
                     var currentKeyboardPosition = TouchKeyboardHelper.GetTouchKeyboardPosition();
 
                     if (currentKeyboardPosition != null && keyboardPosition != null &&
-                        currentKeyboardPosition != keyboardPosition)
+                        MuchDifference((Rectangle)currentKeyboardPosition, (Rectangle)keyboardPosition, keyboardDockedPositionMaxDiff))
                     {
                         Debug.WriteLine("Keyboard height changed");
                         UpdateKeyboardHeight((Rectangle)currentKeyboardPosition);
@@ -145,6 +145,25 @@ namespace Windows10TouchKeyboardFocusFix
             {
                 KeyboardClosed();
             }
+        }
+
+        private bool MuchDifference(Rectangle r1, Rectangle r2, int maxDelta)
+        {
+            var deltaLeft = r1.Left - r2.Left;
+            var deltaTop = r1.Top - r2.Top;
+            var deltaWidth = r1.Width - r2.Width;
+            var deltaHeight = r1.Height - r2.Height;
+
+            if (Math.Abs(deltaLeft) > maxDelta)
+                return true;
+            if (Math.Abs(deltaTop) > maxDelta)
+                return true;
+            if (Math.Abs(deltaWidth) > maxDelta)
+                return true;
+            if (Math.Abs(deltaHeight) > maxDelta)
+                return true;
+
+            return false;
         }
 
         private void UpdateKeyboardHeight(Rectangle keyboardPosition)
