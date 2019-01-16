@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -95,6 +96,34 @@ namespace Windows10TouchKeyboardFocusFix
 
             return (placement.ShowCmd == Win32.Enums.ShowWindowCommands.Maximize);
         }
+
+        internal static bool IsForegroundWindowUWP()
+        {
+            try
+            {
+                var foregroundWindow = GetForegroundWindow();
+                var threadId = GetWindowThreadProcessId(foregroundWindow, out uint processId);
+                var process = Process.GetProcessById((int)processId);
+
+                if (process.ProcessName == "ApplicationFrameHost")
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("IsForegroundWindowUWP failed: " + ex.ToString());
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Retrieves the identifier of the thread that created the specified window and, optionally, the identifier of the process that created the window. 
+        /// </summary>
+        /// <param name="hWnd">A handle to the window.</param>
+        /// <param name="lpdwProcessId">A pointer to a variable that receives the process identifier. If this parameter is not NULL, GetWindowThreadProcessId copies the identifier of the process to the variable; otherwise, it does not.</param>
+        /// <returns>The return value is the identifier of the thread that created the window.</returns>
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
 
         /// <summary>
         ///     Retrieves a handle to the foreground window (the window with which the user is currently working). The system

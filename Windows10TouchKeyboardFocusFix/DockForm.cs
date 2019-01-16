@@ -163,11 +163,13 @@ namespace Windows10TouchKeyboardFocusFix
         private void KeyboardOpened(Rectangle keyboardPosition)
         {
             Debug.WriteLine("KeyboardOpened");
-            isVisible = true;
 
             if (WindowManipulationHelper.IsForegroundWindowMaximized() &&
-                IsKeyboardInDockedMode())
+                IsKeyboardInDockedMode() &&
+                !WindowManipulationHelper.IsForegroundWindowUWP())
             {
+                isVisible = true;
+
                 if (TabletModeHelper.IsTabletMode)
                 {
                     ShowDock(keyboardPosition);
@@ -246,7 +248,14 @@ namespace Windows10TouchKeyboardFocusFix
 
         private void menuExit_Click(object sender, EventArgs e)
         {
+            ExitProgram();
+        }
 
+        private void ExitProgram()
+        {
+            this.Edge = AppBarEdges.Float;
+            notifyIcon.Visible = false;
+            Application.Exit();
         }
     }
 }
