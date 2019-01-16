@@ -38,6 +38,7 @@ namespace Windows10TouchKeyboardFocusFix
                         },
                         onFirstRun: () =>
                         {
+                            GoogleAnalyticsHelper.TrackPage("Installed");
                             StartupHelper.AddToStartup();
                         });
                 }

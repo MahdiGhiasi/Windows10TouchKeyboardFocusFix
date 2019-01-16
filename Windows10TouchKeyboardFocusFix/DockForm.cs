@@ -42,6 +42,7 @@ namespace Windows10TouchKeyboardFocusFix
                 try
                 {
                     TabletModeChanged(isTabletMode);
+                    GoogleAnalyticsHelper.TrackEvent("UsageMode", isTabletMode ? "Tablet" : "Desktop");
                 }
                 catch (Exception ex)
                 {
@@ -74,11 +75,18 @@ namespace Windows10TouchKeyboardFocusFix
             var windowsVersion = Environment.OSVersion.Version;
             if (windowsVersion < Version.Parse("10.0.16299.0"))
             {
+                GoogleAnalyticsHelper.TrackEvent("InstalledOnUnsupportedOS", windowsVersion.ToString());
                 MessageBox.Show("Touch Keyboard Focus Fix only works on Windows 10 v1709 (Fall Creators Update) and above.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ExitProgram();
             }
 
             SquirrelHelper.CheckForUpdates();
+
+            var appVersion = new Version(Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>().Version);
+            GoogleAnalyticsHelper.TrackPage("DockForm");
+            GoogleAnalyticsHelper.TrackEvent("OSVersion", windowsVersion.ToString());
+            GoogleAnalyticsHelper.TrackEvent("AppStarted", appVersion.ToString());
+            GoogleAnalyticsHelper.TrackEvent("UsageMode", TabletModeHelper.IsTabletMode ? "Tablet" : "Desktop");
         }
 
         private bool IsKeyboardInDockedMode()

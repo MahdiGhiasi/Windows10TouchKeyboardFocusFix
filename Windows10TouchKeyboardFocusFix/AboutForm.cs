@@ -28,19 +28,28 @@ namespace Windows10TouchKeyboardFocusFix
             titleLabel.Text = title;
 
             runOnStartupCheckBox.Checked = StartupHelper.IsRegisteredToRunAtStartup();
+
+            GoogleAnalyticsHelper.TrackPage("AboutForm");
         }
 
         private void githubLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            GoogleAnalyticsHelper.TrackEvent("About", "LinkClicked", "Github");
             Process.Start("https://github.com/MahdiGhiasi/Windows10TouchKeyboardFocusFix");
         }
 
         private void runOnStartupCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (runOnStartupCheckBox.Checked)
+            {
+                GoogleAnalyticsHelper.TrackEvent("Settings", "Startup", "Enabled");
                 StartupHelper.AddToStartup();
+            }
             else
+            {
+                GoogleAnalyticsHelper.TrackEvent("Settings", "Startup", "Disabled");
                 StartupHelper.RemoveFromStartup();
+            }
         }
     }
 }
