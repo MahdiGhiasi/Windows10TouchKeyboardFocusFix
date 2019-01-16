@@ -33,13 +33,6 @@ namespace Windows10TouchKeyboardFocusFix
             Opacity = 0.01;
             Top = Screen.PrimaryScreen.Bounds.Height;
             this.Visible = false;
-
-            var windowsVersion = Environment.OSVersion.Version;
-            if (windowsVersion < Version.Parse("10.0.16299.0"))
-            {
-                MessageBox.Show("Touch Keyboard Focus Fix only works on Windows 10 v1709 (Fall Creators Update) and above.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Exit();
-            }
         }
 
         private void TabletModeHelper_TabletModeChanged(object sender, bool isTabletMode)
@@ -77,6 +70,13 @@ namespace Windows10TouchKeyboardFocusFix
         {
             keyboardStateCheckTimer.Enabled = true;
             notifyIcon.Visible = true;
+
+            var windowsVersion = Environment.OSVersion.Version;
+            if (windowsVersion < Version.Parse("10.0.16299.0"))
+            {
+                MessageBox.Show("Touch Keyboard Focus Fix only works on Windows 10 v1709 (Fall Creators Update) and above.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExitProgram();
+            }
 
             SquirrelHelper.CheckForUpdates();
         }
