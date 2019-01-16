@@ -267,18 +267,23 @@ namespace Windows10TouchKeyboardFocusFix
 
         private void notifyIcon_Click(object sender, EventArgs e)
         {
-            
+            OpenAboutForm();    
         }
 
         private void menuAbout_Click(object sender, EventArgs e)
         {
-            var aboutForm = new AboutForm();
-            aboutForm.ShowDialog();
+            OpenAboutForm();
         }
 
         private void menuExit_Click(object sender, EventArgs e)
         {
             ExitProgram();
+        }
+
+        private static void OpenAboutForm()
+        {
+            var aboutForm = new AboutForm();
+            aboutForm.ShowDialog();
         }
 
         private void ExitProgram()
