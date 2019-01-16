@@ -21,6 +21,7 @@ namespace Windows10TouchKeyboardFocusFix
 
         bool isVisible;
         WindowManipulationHelper.WindowState lastWindowState;
+        AboutForm aboutForm = null;
 
         public DockForm()
         {
@@ -285,10 +286,12 @@ namespace Windows10TouchKeyboardFocusFix
             ExitProgram();
         }
 
-        private static void OpenAboutForm()
+        private void OpenAboutForm()
         {
-            var aboutForm = new AboutForm();
-            aboutForm.ShowDialog();
+            if (aboutForm == null)
+                aboutForm = new AboutForm();
+
+            aboutForm.Show();
         }
 
         private void ExitProgram()
