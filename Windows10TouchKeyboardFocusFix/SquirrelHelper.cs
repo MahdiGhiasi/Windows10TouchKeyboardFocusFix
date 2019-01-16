@@ -15,29 +15,35 @@ namespace Windows10TouchKeyboardFocusFix
 
         internal static void ProcessSquirrelEvents()
         {
-            using (var mgr = new UpdateManager(releasesPath))
+            try
             {
-                // Note, in most of these scenarios, the app exits after this method
-                // completes!
-                SquirrelAwareApp.HandleEvents(
-                  onInitialInstall: v =>
-                  {
-                      mgr.CreateShortcutForThisExe();
-                  },
-                  onAppUpdate: v =>
-                  {
-                      mgr.CreateShortcutForThisExe();
-                  },
-                  onAppUninstall: v => 
-                  {
-                      mgr.RemoveShortcutForThisExe();
-                  },
-                  onFirstRun: () =>
-                  {
-                      StartupHelper.AddToStartup();
-                  });
+                using (var mgr = new UpdateManager(releasesPath))
+                {
+                    // Note, in most of these scenarios, the app exits after this method
+                    // completes!
+                    SquirrelAwareApp.HandleEvents(
+                      onInitialInstall: v =>
+                      {
+                          mgr.CreateShortcutForThisExe();
+                      },
+                      onAppUpdate: v =>
+                      {
+                          mgr.CreateShortcutForThisExe();
+                      },
+                      onAppUninstall: v =>
+                      {
+                          mgr.RemoveShortcutForThisExe();
+                      },
+                      onFirstRun: () =>
+                      {
+                          StartupHelper.AddToStartup();
+                      });
+                }
             }
-
+            catch (Exception ex)
+            {
+                Debug.WriteLine("ProcessSquirrelEvents failed: " + ex.ToString());
+            }
         }
 
         internal static async void CheckForUpdates()
