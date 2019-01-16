@@ -69,6 +69,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TabletModeHelper.cs" />
+    <Compile Include="TaskbarHelper.cs" />
     <Compile Include="TouchKeyboardHelper.cs" />
     <Compile Include="Win32\Enums\ShowWindowCommands.cs" />
     <Compile Include="Win32\Structs\WINDOWPLACEMENT.cs" />

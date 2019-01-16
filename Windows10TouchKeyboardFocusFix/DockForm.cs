@@ -207,9 +207,14 @@ namespace Windows10TouchKeyboardFocusFix
 
         private void ShrinkForegroundWindow(Rectangle keyboardPosition)
         {
-            //TODO: Make this compatible with all taskbar configurations
+            var taskbarSize = TaskbarHelper.GetTaskbarSize();
+            var taskbarPosition = TaskbarHelper.GetTaskbarPosition();
+            var diff = 0;
+            if (taskbarPosition == TaskbarHelper.TaskbarPosition.Bottom)
+                diff = -taskbarSize.Height;
+
             lastWindowState = WindowManipulationHelper.ChangeForegroundWindowToWindowedFullScreen(
-                keyboardPosition.Height - 92);
+                keyboardPosition.Height + diff);
         }
 
         private void KeyboardClosed()
@@ -239,8 +244,13 @@ namespace Windows10TouchKeyboardFocusFix
             await Task.Delay(250);
             this.Edge = AppBarEdges.Bottom;
 
-            //TODO: Make this compatible with all taskbar configurations
-            this.Height = keyboardPosition.Height - 92;
+            var taskbarSize = TaskbarHelper.GetTaskbarSize();
+            var taskbarPosition = TaskbarHelper.GetTaskbarPosition();
+            if (taskbarPosition == TaskbarHelper.TaskbarPosition.Bottom)
+                this.Height = keyboardPosition.Height - taskbarSize.Height;
+            else
+                this.Height = keyboardPosition.Height;
+
             this.Width = 1;
 
         }
