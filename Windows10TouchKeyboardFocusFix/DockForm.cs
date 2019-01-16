@@ -265,9 +265,10 @@ namespace Windows10TouchKeyboardFocusFix
             Top = Screen.PrimaryScreen.Bounds.Height;
         }
 
-        private void notifyIcon_Click(object sender, EventArgs e)
+        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
-            OpenAboutForm();    
+            if (e.Button == MouseButtons.Left)
+                OpenAboutForm();
         }
 
         private void menuAbout_Click(object sender, EventArgs e)
