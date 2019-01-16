@@ -288,7 +288,7 @@ namespace Windows10TouchKeyboardFocusFix
 
         private void OpenAboutForm()
         {
-            if (aboutForm == null)
+            if (aboutForm == null || aboutForm.IsDisposed)
                 aboutForm = new AboutForm();
 
             aboutForm.Show();
