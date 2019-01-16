@@ -27,10 +27,13 @@ namespace Windows10TouchKeyboardFocusFix
                       },
                       onAppUpdate: v =>
                       {
+                          if (StartupHelper.IsRegisteredToRunAtStartup())
+                              StartupHelper.AddToStartup(); // Fix executable path change
                           mgr.CreateShortcutForThisExe();
                       },
                       onAppUninstall: v =>
                       {
+                          StartupHelper.RemoveFromStartup();
                           mgr.RemoveShortcutForThisExe();
                       },
                       onFirstRun: () =>
