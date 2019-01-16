@@ -10,7 +10,8 @@ namespace Windows10TouchKeyboardFocusFix
 {
     internal static class SquirrelHelper
     {
-        private const string releasesPath = "https://www.ghiasi.net/apps/Windows10TouchKeyboardFocusFix/Releases";
+        //private const string releasesPath = "https://www.ghiasi.net/apps/Windows10TouchKeyboardFocusFix/Releases";
+        private const string releasesPath = "https://github.com/MahdiGhiasi/Windows10TouchKeyboardFocusFix";
 
         internal static void ProcessSquirrelEvents()
         {
@@ -43,7 +44,8 @@ namespace Windows10TouchKeyboardFocusFix
         {
             try
             {
-                using (var mgr = new UpdateManager(releasesPath))
+                //using (var mgr = new UpdateManager(releasesPath))
+                using (var mgr = await UpdateManager.GitHubUpdateManager(releasesPath))
                 {
                     await mgr.UpdateApp();
                 }
