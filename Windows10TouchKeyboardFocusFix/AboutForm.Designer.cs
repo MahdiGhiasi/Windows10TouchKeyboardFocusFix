@@ -28,34 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.titleLabel = new System.Windows.Forms.Label();
+            this.versionLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.githubLink = new System.Windows.Forms.LinkLabel();
             this.runOnStartupCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // label1
+            // titleLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(17, 20);
-            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(302, 21);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Touch Keyboard Focus Fix for Windows 10";
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Location = new System.Drawing.Point(17, 20);
+            this.titleLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(302, 21);
+            this.titleLabel.TabIndex = 0;
+            this.titleLabel.Text = "Touch Keyboard Focus Fix for Windows 10";
             // 
-            // label2
+            // versionLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(18, 41);
-            this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "v1.0";
+            this.versionLabel.AutoSize = true;
+            this.versionLabel.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.versionLabel.Location = new System.Drawing.Point(18, 44);
+            this.versionLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.versionLabel.Name = "versionLabel";
+            this.versionLabel.Size = new System.Drawing.Size(27, 13);
+            this.versionLabel.TabIndex = 1;
+            this.versionLabel.Text = "v1.0";
             // 
             // label3
             // 
@@ -101,8 +101,8 @@
             this.Controls.Add(this.runOnStartupCheckBox);
             this.Controls.Add(this.githubLink);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.versionLabel);
+            this.Controls.Add(this.titleLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.MaximizeBox = false;
@@ -117,8 +117,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Label versionLabel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel githubLink;
         private System.Windows.Forms.CheckBox runOnStartupCheckBox;
