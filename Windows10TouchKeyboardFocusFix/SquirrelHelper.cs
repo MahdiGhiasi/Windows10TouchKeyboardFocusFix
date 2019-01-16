@@ -21,25 +21,25 @@ namespace Windows10TouchKeyboardFocusFix
                     // Note, in most of these scenarios, the app exits after this method
                     // completes!
                     SquirrelAwareApp.HandleEvents(
-                      onInitialInstall: v =>
-                      {
-                          mgr.CreateShortcutForThisExe();
-                      },
-                      onAppUpdate: v =>
-                      {
-                          if (StartupHelper.IsRegisteredToRunAtStartup())
-                              StartupHelper.AddToStartup(); // Fix executable path change
-                          mgr.CreateShortcutForThisExe();
-                      },
-                      onAppUninstall: v =>
-                      {
-                          StartupHelper.RemoveFromStartup();
-                          mgr.RemoveShortcutForThisExe();
-                      },
-                      onFirstRun: () =>
-                      {
-                          StartupHelper.AddToStartup();
-                      });
+                        onInitialInstall: v =>
+                        {
+                            mgr.CreateOnlyStartMenuShortcutForThisExe();
+                        },
+                        onAppUpdate: v =>
+                        {
+                            if (StartupHelper.IsRegisteredToRunAtStartup())
+                                StartupHelper.AddToStartup(); // Fix executable path change
+                            mgr.CreateOnlyStartMenuShortcutForThisExe();
+                        },
+                        onAppUninstall: v =>
+                        {
+                            StartupHelper.RemoveFromStartup();
+                            mgr.RemoveOnlyStartMenuShortcutForThisExe();
+                        },
+                        onFirstRun: () =>
+                        {
+                            StartupHelper.AddToStartup();
+                        });
                 }
             }
             catch (Exception ex)
