@@ -33,16 +33,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.githubLink = new System.Windows.Forms.LinkLabel();
             this.runOnStartupCheckBox = new System.Windows.Forms.CheckBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // titleLabel
             // 
-            this.titleLabel.AutoSize = true;
             this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.Location = new System.Drawing.Point(17, 20);
+            this.titleLabel.Location = new System.Drawing.Point(81, 23);
             this.titleLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(302, 21);
+            this.titleLabel.Size = new System.Drawing.Size(238, 53);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Touch Keyboard Focus Fix for Windows 10";
             // 
@@ -50,7 +51,7 @@
             // 
             this.versionLabel.AutoSize = true;
             this.versionLabel.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.versionLabel.Location = new System.Drawing.Point(18, 44);
+            this.versionLabel.Location = new System.Drawing.Point(82, 73);
             this.versionLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.versionLabel.Name = "versionLabel";
             this.versionLabel.Size = new System.Drawing.Size(27, 13);
@@ -61,7 +62,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(18, 121);
+            this.label3.Location = new System.Drawing.Point(10, 148);
             this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(148, 13);
@@ -71,7 +72,7 @@
             // githubLink
             // 
             this.githubLink.AutoSize = true;
-            this.githubLink.Location = new System.Drawing.Point(18, 142);
+            this.githubLink.Location = new System.Drawing.Point(10, 169);
             this.githubLink.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.githubLink.Name = "githubLink";
             this.githubLink.Size = new System.Drawing.Size(81, 13);
@@ -83,8 +84,8 @@
             // runOnStartupCheckBox
             // 
             this.runOnStartupCheckBox.AutoSize = true;
-            this.runOnStartupCheckBox.Location = new System.Drawing.Point(20, 74);
-            this.runOnStartupCheckBox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.runOnStartupCheckBox.Location = new System.Drawing.Point(13, 109);
+            this.runOnStartupCheckBox.Margin = new System.Windows.Forms.Padding(1);
             this.runOnStartupCheckBox.Name = "runOnStartupCheckBox";
             this.runOnStartupCheckBox.Size = new System.Drawing.Size(96, 17);
             this.runOnStartupCheckBox.TabIndex = 4;
@@ -92,24 +93,36 @@
             this.runOnStartupCheckBox.UseVisualStyleBackColor = true;
             this.runOnStartupCheckBox.CheckedChanged += new System.EventHandler(this.runOnStartupCheckBox_CheckedChanged);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Windows10TouchKeyboardFocusFix.Properties.Resources.IconMedium;
+            this.pictureBox1.Location = new System.Drawing.Point(13, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(335, 182);
+            this.ClientSize = new System.Drawing.Size(335, 195);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.runOnStartupCheckBox);
             this.Controls.Add(this.githubLink);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.versionLabel);
             this.Controls.Add(this.titleLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.MaximizeBox = false;
             this.Name = "AboutForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About";
             this.Load += new System.EventHandler(this.AboutForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,5 +135,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel githubLink;
         private System.Windows.Forms.CheckBox runOnStartupCheckBox;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
